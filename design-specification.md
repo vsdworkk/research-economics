@@ -1,46 +1,26 @@
 # Labour Productivity Page Design Specification
 
-## Productivity comparison
+## Economy-wide labour productivity
 
-### Data sources
+### Data source
 
-ABS Quarterly National Accounts — June quarter 2026
+ABS Quarterly National Accounts — June quarter 2026, Table 1: Key National Accounts Aggregates.
 
-Table 1: Key National Accounts Aggregates
+[View ABS release](https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/jun-2026)
 
-[View ABS release](https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/jun-2026)  |  [Download source workbook](https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/jun-2026/5206001_Key_Aggregates.xlsx)
+[Download productivity source workbook](https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/jun-2026/5206001_Key_Aggregates.xlsx)
 
-Both series: quarterly, seasonally adjusted. Chart period: June 2016–June 2026.
-
-#### Market sector
-
-Series: A3606058X
-
-Gross value added per hour worked market sector: Index
-
-Worksheet Data1 · Column CC
-
-#### Total economy
-
-Series: A2304192L
-
-GDP per hour worked: Index
-
-Worksheet Data1 · Column CB
+Series A2304192L — GDP per hour worked: Index, seasonally adjusted. Worksheet Data1, column CB. Chart period: June 2016–June 2026.
 
 ### Calculation
 
-Set June 2016 = 100 for both series (96.3 and 98.7 are the respective published index values for June 2016) :
+**Displayed index = (published index ÷ June 2016 published index) × 100**
 
-**Market sector = (published index ÷ 96.3) × 100**
+June 2016 published index: 98.7. June 2026 published index: 99.7; displayed index: 101.0. This means productivity is about 1.0% above its starting level, not 1.0% annual growth.
 
-**Total economy = (published index ÷ 98.7) × 100**
+Rebasing preserves growth rates and seasonal adjustment. No further inflation adjustment is required. Use the full history from the same release when refreshing; ABS may revise earlier observations.
 
-**Headline change = latest rebased index − 100**
-
-- June 2026: market sector +4.3%; total economy +1.0%.
-
-- No further seasonal or inflation adjustment is required. Round only the displayed results; source indexes are already rounded.
+Matches Ben’s nominated series and use for changes over time. Index values are relative comparisons, not dollar output per hour.
 
 ## Labour productivity growth by industry
 
@@ -84,6 +64,12 @@ Professional, scientific and technical services (M): A2716191X / A85392502L
 
 Administrative and support services (N): A2716585R / A85392722R
 
+Public administration and safety (O): A2716192A / A85392872W
+
+Education and training (P): A2716193C / A85393092A
+
+Health care and social assistance (Q): A2716194F / A85393382X
+
 Arts and recreation services (R): A2716195J / A85393462X
 
 Other services (S): A2716196K / A85393752W
@@ -100,47 +86,41 @@ The factor of 1,000 converts the units to dollars per hour; it cancels out when 
 
 ### Visual
 
-Rank all 16 market-sector industries (ANZSIC A–N, R and S) by year-ended growth, highest to lowest. Exclude public administration, education and health (O–Q). Label “Year ended June 2026”; refresh quarterly. These are industry growth rates, not contributions to national growth.
+Rank all 19 industries (ANZSIC divisions A–S) by year-ended growth, highest to lowest, including public administration and safety, education and training, and health care and social assistance. Label “Year ended June 2026”; refresh quarterly. These are industry growth rates, not contributions to national growth.
 
-Recent industry hours estimates are subject to ABS revisions. This calculation uses verified source series; Ben’s review of the methodology remains pending.
+All 19 GVA and hours series pairs match Ben’s methodology note. Both inputs are seasonally adjusted; output uses chain volume measures. Compare growth within each industry over time, not dollar productivity levels between industries. Recent industry hours estimates remain subject to ABS revisions.
 
-## GDP growth and forecast revisions
+## Economy-wide real unit labour costs
 
-### Status
+### Data source
 
-The current wireframe uses illustrative history and Scenario A/B values. The sources below are those cited by the prototype, with the required method for replacing the illustrative values.
+ABS Quarterly National Accounts — June quarter 2026, Table 42: Unit Labour Costs.
 
-### Data sources
+[Download real unit labour cost source workbook](https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/jun-2026/5206042_Unit_Labour_Costs.xlsx)
 
-ABS National Accounts, March 2026 — Table 1: Key National Accounts Aggregates. GDP, chain volume measures, seasonally adjusted ($ millions); series A2304402X. June 2026 data are now available for a refresh.
+Series A2433071F — Unit labour cost – Real, seasonally adjusted. Worksheet Data1, column I. Use the total-economy series, not the non-farm series.
 
-[ABS historical GDP source](https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-national-income-expenditure-and-product/mar-2026)
+### Calculation
 
-MYEFO 2025–26 — Table 1.1: Major Economic Parameters, Real GDP row (previous forecast).
+**Displayed index = (published index ÷ 104.8) × 100**
 
-[MYEFO forecast source](https://budget.gov.au/content/myefo/download/myefo-2025-26.pdf)
+104.8 is the published June 2016 index. June 2026 is 103.6, giving a rebased index of 98.9.
 
-Budget 2026–27 — Budget Paper No. 1, Table 1.1: Major Economic Parameters, Real GDP row (updated forecast).
+**Cumulative change since June 2016 (%) = latest rebased index − 100**
 
-[Budget forecast source](https://budget.gov.au/content/bp1/download/bp1_2026-27.pdf)
+The headline therefore shows real unit labour costs 1.1% below their June 2016 level. This is the cumulative ten-year change, not an average annual growth rate.
 
-### Required calculation
+Use the published real unit labour cost index directly; no division of component series, extra inflation adjustment or seasonal adjustment is required.
 
-**Historical growth (%) = (sum of the latest four quarters of real GDP ÷ sum of the preceding four quarters − 1) × 100**
+### Interpretation and alignment
 
-At each June quarter, this compares one financial year with the previous financial year. Use GDP levels, not a sum or average of quarterly percentage growth rates.
+Shows changes in the real cost of labour per unit of output over June 2016–June 2026. Matches Ben’s exact series and intended use. The displayed index is not a dollar cost.
 
-Forecasts are already financial-year percentage growth rates: use them directly. Do not annualise or seasonally adjust them again. Plot at financial-year endpoints; the tables do not supply a quarterly forecast path.
+Ben notes that changes over more than one year are often expressed as average annualised growth. The current chart instead uses an explicitly labelled cumulative comparison; changing to annualised growth would be a presentation decision.
 
-**Forecast revision (percentage points) = Budget forecast − MYEFO forecast for the same financial year**
+**Average annualised growth (%) = [(ending value ÷ starting value)^(1 ÷ number of years) − 1] × 100**
 
-For 2026–27: 1.75% − 2.25% = −0.50 percentage points. Replace Scenario A/B with the publication names when real data are implemented.
-
-### Headline
-
-The existing headline refers to 2026–27. The forecast tables establish the downgrade; attributing it to the Middle East conflict requires support from the accompanying economic outlook commentary.
-
-## Market-sector annual growth — Page 3
+## Market-sector annual productivity growth
 
 ### Data source
 
@@ -156,7 +136,7 @@ Display June 2016–June 2026; inputs start in June 2015 to calculate the first 
 
 This is the implemented chart calculation, using rounded ABS index levels. Its June 2026 result rounds to −0.2%, whereas the ABS published annual growth used in the headline card is −0.1%. Reconcile this rounding difference before final publication; do not describe the derived chart as the published percentage-growth series.
 
-## Headline cards — all pages
+## Headline cards
 
 ### Data source
 
@@ -172,22 +152,33 @@ Labour productivity — economy-wide (GDP per hour worked): 0.0% over the quarte
 
 Use these published percentages directly; no rebasing, annualising or additional seasonal adjustment. ABS “−” means nil or rounded to zero and is displayed as 0.0%.
 
-For quarterly updates, Table 1 percentage-change series are GDP A2304370T, market-sector productivity A3606054R, and economy-wide productivity A2304392F. Annual cards use the published through-the-year column, not the rounded-index calculation used in Page 3.
+For quarterly updates, Table 1 percentage-change series are GDP A2304370T, market-sector productivity A3606054R, and economy-wide productivity A2304392F. Annual cards use the published through-the-year column, not the rounded-index calculation used in the annual-growth chart.
 
 ### Presentation
 
-GDP is a separate group. One shared Labour productivity panel contains Market sector and Economy-wide subgroups, each showing quarterly and annual growth. The financial-year comparison has been removed.
+GDP is a separate group. One shared Labour productivity panel contains Market sector and Economy-wide subgroups, each showing quarterly and annual growth. Both groups include ABS source hyperlinks. The headline strip follows the original pale-blue styling, with simple headings and thin dividers. Financial-year comparisons are also shown for productivity: 2024–25 compared with 2023–24, market sector −0.2% and economy-wide −0.7%. Use the published percentages from the Australian System of National Accounts 2024–25 key figures table directly. These compare full financial years, rather than June quarters; no annualisation or extra seasonal adjustment is applied. Source: https://www.abs.gov.au/statistics/economy/national-accounts/australian-system-national-accounts/2024-25
 
-## Layout options and visual coverage
+## Current layout and presentation
 
-Page 1 — combined market-sector and economy-wide indexes at top left; GDP forecasts below; all 16 market-sector industries on the right spanning both rows.
+One page, 3508 px wide × 2480 px tall, automatically fitted to the browser. The wireframe starts with the headline cards. There is no masthead, navigation tabs, preview toolbar, Print/PDF button or separate implementation-notes section.
 
-Page 2 — market-sector index, economy-wide index and GDP forecasts stacked on the left; the same industry chart on the right spanning all three rows.
+Left column, top to bottom: market-sector annual productivity growth; economy-wide productivity index; economy-wide real unit labour costs.
 
-Page 3 — market-sector annual growth, economy-wide index and GDP forecasts stacked on the left; the same industry chart on the right spanning all three rows.
+Right column: all 19 industries, ranked by year-ended productivity growth, spanning all three chart rows.
 
-Separate index charts use the same series, June 2016 = 100 rebasing, dates and shared 98–108 scale documented under Productivity comparison. Splitting the visual introduces no additional calculations.
+Each chart presents its active title, a permanent pale-plum Title automation callout, then a subtitle containing the measure, units, seasonal adjustment, baseline and comparison period as applicable. Sources and caveats sit below the plot. Callouts explain proposed automation; automatic title generation is not yet implemented.
 
-All pages share the same headline cards and industry data. Forecast values remain illustrative until the documented ABS and Treasury inputs are implemented.
+Market-sector callout: automate rose/fell, annual percentage change and reporting quarter. Economy-wide productivity and real unit labour cost callouts: automate percentage change and above/below the fixed June 2016 baseline. Industry callout: rank the latest results to select industry names and growth rates; adapt wording if all industries rise or fall. Handle ties, rounded zero and missing data; avoid automated causal or good/bad interpretations.
 
+Charts use HTML and CSS, Aptos with Arial fallback, Dark Eucalyptus (#5D7A38) lines, Graphite (#404246) context bars and Plum (#62165C) for the industries named in the title. Individual chart borders are removed; gridlines are light and endpoints directly labelled. The industry column is slightly wider so its current headline fits on one line. Check physical font sizes and wide chart proportions in the final Power BI/PDF output.
+
+## Methodology review and remaining decisions
+
+Ben’s note confirms the economy-wide productivity index, all 19 industry input pairs and the real unit labour cost index used here. The industry calculation matches his method; the chart displays growth rates rather than cross-industry dollar levels.
+
+Ben’s note does not explicitly specify the aggregate market-sector productivity series. Confirm A3606058X with Econ Branch if formal endorsement is required; do not treat the note as approval of every chart-design choice.
+
+The market-sector annual-growth chart’s −0.2% and headline card’s −0.1% differ because the chart is calculated from rounded indexes. This remains unresolved and must be reconciled or clearly explained before final publication.
+
+The real unit labour cost headline uses cumulative change, whereas Ben describes average annualised growth as a common convention for longer periods. The current wording is explicit; no annualisation has been applied.
 
